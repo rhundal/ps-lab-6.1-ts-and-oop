@@ -2,6 +2,16 @@ import PhysicalProduct from "./models/PhysicalProduct.js";
 import DigitalProduct from "./models/DigitalProduct.js";
 
 let p1: PhysicalProduct = new PhysicalProduct("6010", "Nike shoes", 23.5, 20);
+let p2: PhysicalProduct = new PhysicalProduct(
+  "1010",
+  "Adidas Shirt",
+  15.5,
+  0.5,
+);
+// let p3: PhysicalProduct = new PhysicalProduct("0005", "Mouse", 53.5, 0.2);
+// let p4: PhysicalProduct = new PhysicalProduct("5553", "Laptop", 1000, 1.5);
+// let p5: PhysicalProduct = new PhysicalProduct("2212", "Clay Pot", 33.5, 2.0);
+
 let d1: DigitalProduct = new DigitalProduct(
   "1801",
   "Mario Videogame",
@@ -24,3 +34,20 @@ let d1: DigitalProduct = new DigitalProduct(
     );
   }
 });
+
+console.log("\nDemo of bulkDiscounts on physical product P1 based on quantity");
+
+let priceAfterBulkDiscountBasedOnQty = p1.bulkDiscounts(3);
+console.log(priceAfterBulkDiscountBasedOnQty);
+
+console.log("\nDemo of bulkDiscounts on physical product P1 based on size");
+
+let priceAfterBulkDiscountBasedOnSize = p2.bulkDiscounts(3.5);
+console.log(priceAfterBulkDiscountBasedOnSize);
+
+console.log(
+  "\nDemo of DiscountableProduct interface - applying discount to product d1.",
+);
+
+let discountedPrice = d1.applyDiscount(2.3);
+console.log(discountedPrice);

@@ -22,6 +22,23 @@ class PhysicalProduct extends ProductClass {
   getFormattedWeight() {
     return `${this.name} weights:${this.weight} kg`;
   }
+
+  bulkDiscounts(criteria: number | string) {
+    let bulkDiscount = 0.0;
+
+    if (typeof criteria === "number") {
+      // quantity
+
+      bulkDiscount = this.getPriceWithTax() - this.getPriceWithTax() / criteria; // get bulk discount based on number of units
+    } else {
+      // size
+      let sizeInNum = Number(criteria);
+      bulkDiscount =
+        this.getPriceWithTax() - this.getPriceWithTax() / sizeInNum; // get bulk discount based on file size
+    }
+
+    return bulkDiscount;
+  }
 }
 
 export default PhysicalProduct;

@@ -1,9 +1,13 @@
 import ProductClass from "./Product.js";
 
-class DigitalProduct extends ProductClass {
+interface DiscountableProduct {
+  applyDiscount(discount: number): number;
+}
+class DigitalProduct extends ProductClass implements DiscountableProduct {
   fileSize: number;
 
   constructor(sku: string, name: string, price: number, fileSize: number) {
+    // using constructor to make an instance of product
     super(sku, name, price);
     this.fileSize = fileSize;
   }
@@ -18,6 +22,13 @@ class DigitalProduct extends ProductClass {
 
   formattedSizeGB(): string {
     return `${this.name} has size of ${this.fileSize} mb`;
+  }
+
+  applyDiscount(discountToApply: number): number {
+    let priceAfterAppliedDiscount =
+      this.getPriceWithTax() - this.getPriceWithTax() / discountToApply;
+
+    return priceAfterAppliedDiscount;
   }
 }
 
