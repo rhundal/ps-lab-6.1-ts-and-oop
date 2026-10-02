@@ -18,4 +18,8 @@
 
 ### If you had to add a new type of product (e.g., a SubscriptionProduct), how would polymorphism make this extension straightforward?
 
--
+- It would just have to extend the Product class and that would enable it to inherit base props and behaviors from it. That would save writing extra code.
+
+### Bonus Exercise Challenge
+
+- Sorting - Since typesafety is type strict, it didnt support covariance directly. I had to use this line (google it) after the function name like `sorting<T extends Product>` to tell typescript that it should aceept/support arrays of Product of any type - basically subclasses - DisplayProduct or PhysicalProduct passed to the function through the array.
