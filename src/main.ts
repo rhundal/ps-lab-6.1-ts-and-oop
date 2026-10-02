@@ -1,5 +1,7 @@
 import PhysicalProduct from "./models/PhysicalProduct.js";
 import DigitalProduct from "./models/DigitalProduct.js";
+import sorting from "./modules/sorting.js";
+import Product from "./models/Product.js";
 
 let p1: PhysicalProduct = new PhysicalProduct("6010", "Nike shoes", 23.5, 20);
 let p2: PhysicalProduct = new PhysicalProduct(
@@ -8,9 +10,9 @@ let p2: PhysicalProduct = new PhysicalProduct(
   15.5,
   0.5,
 );
-// let p3: PhysicalProduct = new PhysicalProduct("0005", "Mouse", 53.5, 0.2);
-// let p4: PhysicalProduct = new PhysicalProduct("5553", "Laptop", 1000, 1.5);
-// let p5: PhysicalProduct = new PhysicalProduct("2212", "Clay Pot", 33.5, 2.0);
+let p3: PhysicalProduct = new PhysicalProduct("0005", "Mouse", 53.5, 0.2);
+let p4: PhysicalProduct = new PhysicalProduct("5553", "Laptop", 1000, 1.5);
+let p5: PhysicalProduct = new PhysicalProduct("2212", "Clay Pot", 33.5, 2.0);
 
 let d1: DigitalProduct = new DigitalProduct(
   "1801",
@@ -51,3 +53,27 @@ console.log(
 
 let discountedPrice = d1.applyDiscount(2.3);
 console.log(discountedPrice);
+
+let arrayOfProducts = [];
+
+arrayOfProducts.push(p1);
+arrayOfProducts.push(p2);
+arrayOfProducts.push(p3);
+arrayOfProducts.push(p4);
+arrayOfProducts.push(p5);
+
+console.log("\nDemo of sorting of products based on price");
+
+let sortedArrayByPrice = sorting(p1.price, arrayOfProducts);
+
+sortedArrayByPrice?.forEach((prod) => {
+  console.log(`${prod.name} has price $${prod.price}`);
+});
+
+console.log("\nDemo of sorting of products based on name");
+
+let sortedArrayByName = sorting(p1.name, arrayOfProducts);
+
+sortedArrayByName?.forEach((prod) => {
+  console.log(`${prod.name}`);
+});
